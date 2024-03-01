@@ -5,7 +5,7 @@ const apiKey = process.env.API_KEY;
 
 const getGamesListBySteamId = (id, callback) => {
   try {
-    const apiUrl = `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${apiKey}&steamid=${id}`
+    const apiUrl = `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${apiKey}&steamid=${id}&format=json&include_appinfo=1`
     request(apiUrl, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         const data = JSON.parse(body)
@@ -19,17 +19,6 @@ const getGamesListBySteamId = (id, callback) => {
   }
 }
 
-const getGameInfoByAppId = (id, callback) => {
-  const apiUrl = `https://store.steampowered.com/api/appdetails/?appids=${id}`
-  request(apiUrl, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      const data = JSON.parse(body)
-      callback(data);
-    }
-  });
-}
-
 module.exports={
   getGamesListBySteamId,
-  getGameInfoByAppId,
 }
