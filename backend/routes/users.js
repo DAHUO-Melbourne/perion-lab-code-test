@@ -3,8 +3,12 @@ const services = require('../services/services');
 
 router.route('/:id').get((req,res)=>{
   const userId = req.params.id
-  services.getGamesListBySteamId(userId, (gamesInfo) => {
-    res.json(gamesInfo);
+  services.getGamesListBySteamId(userId, (gamesInfo, error) => {
+    if (error) {
+      res.status(500).json(error);
+    } else {
+      res.json(gamesInfo);
+    }
   });
 });
 
