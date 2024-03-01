@@ -18,4 +18,23 @@ router.route('/:id').get((req,res)=>{
   });
 });
 
+router.route('/getSummaryData/:id').get((req,res)=>{
+  const userId = req.params.id
+  services.getGamesListBySteamId(userId, (response, error) => {
+    if (error) {
+      res.status(500).json(error);
+    } else {
+      const gamesCount = response.game_count;
+      const mostPlayedGame = response.games.sort((a, b) => b.playtime_forever - a.playtime_forever)[0];
+      const totalPlaytime = response.games.reduce((total, obj) => obj.playtime_forever + total, 0);
+      const result = {
+        gamesCount,
+        mostPlayedGame,
+        totalPlaytime,
+      }
+      res.json(result);
+    }
+  });
+});
+
 module.exports=router;
