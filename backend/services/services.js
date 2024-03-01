@@ -9,7 +9,7 @@ const getGamesListBySteamId = (id, callback) => {
     request(apiUrl, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         const data = JSON.parse(body)
-        callback(data, null);
+        callback(data.response, null);
       } else {
         callback(null, { error: error });
       }
