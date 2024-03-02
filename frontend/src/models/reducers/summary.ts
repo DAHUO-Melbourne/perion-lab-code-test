@@ -67,7 +67,7 @@ const reducer = handleActions({
   [getSteamUserSummaryError](state: any, {payload}: any) {
     return {
       ...state,
-      loading: ACTION_STATUS.error,
+      status: ACTION_STATUS.error,
       gamesCount: defaultState.gamesCount,
       mostPlayedGame: defaultState.mostPlayedGame,
       totalPlaytime: defaultState.totalPlaytime
@@ -76,7 +76,7 @@ const reducer = handleActions({
   [getSteamUserSummaryClear](state: any, {payload}: any) {
     return {
       ...state,
-      loading: ACTION_STATUS.clear,
+      status: ACTION_STATUS.clear,
       gamesCount: defaultState.gamesCount,
       mostPlayedGame: defaultState.mostPlayedGame,
       totalPlaytime: defaultState.totalPlaytime
@@ -85,7 +85,7 @@ const reducer = handleActions({
   [getSteamUserSummaryFail](state: any, {payload}: any) {
     return {
       ...state,
-      loading: ACTION_STATUS.fail,
+      status: ACTION_STATUS.fail,
       gamesCount: defaultState.gamesCount,
       mostPlayedGame: defaultState.mostPlayedGame,
       totalPlaytime: defaultState.totalPlaytime
