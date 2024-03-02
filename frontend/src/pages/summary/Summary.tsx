@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useLocation} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { getSteamUserSummary } from '../../models/actions/summary';
 import { GetUserSummaryDto } from '../../models/requests/summary';
@@ -8,8 +8,9 @@ import Thumbnail from '../../components/thumbnail';
 import SteamIcon from '../../assets/icons/steam-icon.jpeg';
 import { ACTION_STATUS } from '../../models/states';
 import Input from '../../components/input';
+import Button from '../../components/button';
 
-interface stateType {
+export interface stateType {
   steamId: string
 }
 
@@ -28,6 +29,7 @@ const Summary: React.FC<SummaryProps> = ({
   totalPlaytime,
   performGetSteamUserSummary,
 }: SummaryProps) => {
+  const history = useHistory();
   const location = useLocation<stateType>();
   const steamId = location.state.steamId;
   const [inputSteamId, setInputSteamId] = useState<string>(steamId);
@@ -64,6 +66,16 @@ const Summary: React.FC<SummaryProps> = ({
           performGetSteamUserSummary({steamId: inputSteamId})
         }
       />
+      <Button
+        onClick={() => 
+          history.push({
+            pathname: '/games',
+            state: {steamId: inputSteamId}
+          })
+        }
+      >
+        View Full Games List
+      </Button>
     </div>
   );
 }
