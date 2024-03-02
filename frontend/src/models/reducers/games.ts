@@ -42,21 +42,21 @@ const reducer = handleActions({
   [getSteamUserGamesListError](state: any, {payload}: any) {
     return {
       ...state,
-      loading: ACTION_STATUS.error,
+      status: ACTION_STATUS.error,
       gamesList: defaultState.gamesList,
     };
   },
   [getSteamUserGamesListClear](state: any, {payload}: any) {
     return {
       ...state,
-      loading: ACTION_STATUS.clear,
+      status: ACTION_STATUS.clear,
       gamesList: defaultState.gamesList,
     };
   },
   [getSteamUserGamesListFail](state: any, {payload}: any) {
     return {
       ...state,
-      loading: ACTION_STATUS.fail,
+      status: ACTION_STATUS.fail,
       gamesList: defaultState.gamesList,
     };
   },
