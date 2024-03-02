@@ -11,7 +11,8 @@ const GameCard: React.FC<GameCardProps> = ({
 }: GameCardProps) => {
   return (
     <div className='game_card'>
-      {name} {playTime}h
+      <span>{name}</span>
+      <span>{playTime}h</span>
     </div>
   );
 }
