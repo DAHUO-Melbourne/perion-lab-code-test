@@ -2,6 +2,7 @@ import {call, fork, put, takeLatest} from 'redux-saga/effects';
 import {
   getSteamUserSummary,
   getSteamUserSummaryLoading,
+  getSteamUserSummaryClear,
   getSteamUserSummarySuccess,
   getSteamUserSummaryFail,
   getSteamUserSummaryError,
@@ -20,6 +21,7 @@ function* watchGetSteamUserSummary() {
 
 function* performGetSteamUserSummary(payload: any) {
   try {
+    yield put(getSteamUserSummaryClear({}));
     yield put(getSteamUserSummaryLoading({}));
     // @ts-ignore
     const res = yield call(requestGetUserSummary, payload.payload);

@@ -10,6 +10,7 @@ interface stateType {
 }
 
 interface SummaryProps {
+  status: string,
   gamesCount: number,
   mostPlayedGame: mostPlayedGameProps,
   totalPlaytime: number,
@@ -17,6 +18,7 @@ interface SummaryProps {
 }
 
 const Summary: React.FC<SummaryProps> = ({
+  status,
   gamesCount,
   mostPlayedGame,
   totalPlaytime,
@@ -24,6 +26,8 @@ const Summary: React.FC<SummaryProps> = ({
 }: SummaryProps) => {
   const location = useLocation<stateType>();
   const steamId = location.state.steamId;
+
+  console.log(status);
 
   useEffect(() => {
     performGetSteamUserSummary({steamId: steamId})
@@ -38,6 +42,7 @@ const Summary: React.FC<SummaryProps> = ({
 
 const mapStateProps = (state: any) => {
   return {
+    status: state.summary?.status,
     gamesCount: state.summary?.gamesCount,
     mostPlayedGame: state.summary?.mostPlayedGame,
     totalPlaytime: state.summary?.totalPlaytime

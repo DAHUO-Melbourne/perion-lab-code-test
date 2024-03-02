@@ -7,6 +7,7 @@ import {
   getSteamUserSummaryError,
   getSteamUserSummaryFail,
 } from '../actions/summary';
+import { ACTION_STATUS } from '../states';
 
 export interface mostPlayedGameProps {
   appid: number,
@@ -22,12 +23,14 @@ export interface mostPlayedGameProps {
 }
 
 export interface summaryProps {
+  status: string,
   gamesCount: number,
   mostPlayedGame: mostPlayedGameProps,
   totalPlaytime: number,
 };
 
 const defaultState: summaryProps = {
+  status: ACTION_STATUS.clear,
   gamesCount: 0,
   mostPlayedGame: {
     appid: 0,
@@ -46,15 +49,48 @@ const defaultState: summaryProps = {
 
 
 const reducer = handleActions({
+  [getSteamUserSummaryLoading](state: any, {payload}: any) {
+    return {
+      ...state,
+      status: ACTION_STATUS.loading,
+    };
+  },
   [getSteamUserSummarySuccess](state: any, {payload}: any) {
     return {
       ...state,
+      status: ACTION_STATUS.success,
       gamesCount: payload.gamesCount,
       mostPlayedGame: payload.mostPlayedGame,
       totalPlaytime: payload.totalPlaytime
     };
   },
-
+  [getSteamUserSummaryError](state: any, {payload}: any) {
+    return {
+      ...state,
+      loading: ACTION_STATUS.error,
+      gamesCount: defaultState.gamesCount,
+      mostPlayedGame: defaultState.mostPlayedGame,
+      totalPlaytime: defaultState.totalPlaytime
+    };
+  },
+  [getSteamUserSummaryClear](state: any, {payload}: any) {
+    return {
+      ...state,
+      loading: ACTION_STATUS.clear,
+      gamesCount: defaultState.gamesCount,
+      mostPlayedGame: defaultState.mostPlayedGame,
+      totalPlaytime: defaultState.totalPlaytime
+    };
+  },
+  [getSteamUserSummaryFail](state: any, {payload}: any) {
+    return {
+      ...state,
+      loading: ACTION_STATUS.fail,
+      gamesCount: defaultState.gamesCount,
+      mostPlayedGame: defaultState.mostPlayedGame,
+      totalPlaytime: defaultState.totalPlaytime
+    };
+  },
 }, defaultState);
 
 export default reducer;
