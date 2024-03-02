@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { steamIDTemplate } from '../../utils/regex';
 
 interface InputProps {
   value: string;
@@ -22,7 +23,14 @@ const Input: React.FC<InputProps> = ({
         }}
         className={error ? 'input_error' : 'input'}
       />
-      <span className="material-symbols-outlined icon" onClick={() => onSubmit()}>
+      <span
+        className="material-symbols-outlined icon"
+        onClick={() => {
+          const error =!steamIDTemplate.test(value);
+          setError(error);
+          !error && onSubmit()
+        }}
+      >
         arrow_forward
       </span>
     </div>

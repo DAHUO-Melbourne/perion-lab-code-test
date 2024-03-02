@@ -14,6 +14,7 @@
   width: 300px;
   border-radius: 30px;
   &_error {
+    @extend .input;
     border-color: $red;
   }
 }
