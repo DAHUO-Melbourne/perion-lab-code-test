@@ -95,5 +95,4 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
   },
 });
 
-
 export default connect(mapStateProps, mapDispatchToProps)(Summary);
