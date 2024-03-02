@@ -6,12 +6,15 @@ import { stateType } from '../summary/Summary';
 import {connect} from 'react-redux';
 import { getSteamUserGamesList } from '../../models/actions/games';
 import { GetUserGamesListDto } from '../../models/requests/games';
+import { GameProps } from '../../models/reducers/games';
 
 interface GamesProps {
+  gamesList: GameProps[];
   performGetSteamUserGamesList: (p: GetUserGamesListDto) => void;
 }
 
 const Games: React.FC<GamesProps> = ({
+  gamesList,
   performGetSteamUserGamesList
 }: GamesProps) => {
   const location = useLocation<stateType>();
@@ -30,7 +33,9 @@ const Games: React.FC<GamesProps> = ({
 }
 
 const mapStateProps = (state: any) => {
-  return {};
+  return {
+    gamesList: state.games?.gamesList,
+  };
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({

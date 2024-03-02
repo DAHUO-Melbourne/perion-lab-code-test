@@ -25,9 +25,7 @@ function* performGetSteamUserGamesList(payload: any) {
     yield put(getSteamUserGamesListLoading({}));
     // @ts-ignore
     const res = yield call(requestGetSteamUserGamesList, payload.payload);
-    console.log(res);
     if (res?.status === 200) {
-      console.log(res);
       yield put(getSteamUserGamesListSuccess(res.data));
     } else {
       yield put(getSteamUserGamesListFail());

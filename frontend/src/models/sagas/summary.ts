@@ -25,9 +25,7 @@ function* performGetSteamUserSummary(payload: any) {
     yield put(getSteamUserSummaryLoading({}));
     // @ts-ignore
     const res = yield call(requestGetUserSummary, payload.payload);
-    console.log(res);
     if (res?.status === 200) {
-      console.log(res);
       yield put(getSteamUserSummarySuccess(res.data));
     } else {
       yield put(getSteamUserSummaryFail());
