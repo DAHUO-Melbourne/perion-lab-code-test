@@ -10,7 +10,7 @@ import {
   requestGetUserSummary,
 } from '../requests/summary';
 
-export default function* () {
+export default function* summarySaga() {
   yield fork(watchGetSteamUserSummary);
 };
 
