@@ -16,7 +16,6 @@ const Input: React.FC<InputProps> = ({
   const handleSubmit = () => {
     const error =!steamIDTemplate.test(value);
     setError(error);
-    console.log(error);
     !error && onSubmit()
   }
   return (
