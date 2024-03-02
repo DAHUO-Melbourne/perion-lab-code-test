@@ -13,6 +13,12 @@ const Input: React.FC<InputProps> = ({
   onSubmit,
 }: InputProps) => {
   const [error, setError] = useState<boolean>(false);
+  const handleSubmit = () => {
+    const error =!steamIDTemplate.test(value);
+    setError(error);
+    console.log(error);
+    !error && onSubmit()
+  }
   return (
     <div className='input_wrapper'>
       <input
@@ -21,16 +27,17 @@ const Input: React.FC<InputProps> = ({
           setError(false);
           setValue(e.target.value.toString())
         }}
+        onKeyUp={(e) => {
+          if (e.key !== 'Enter') {
+            return;
+          }
+          handleSubmit();
+        }}
         className={error ? 'input_error' : 'input'}
       />
       <span
         className="material-symbols-outlined icon"
-        onClick={() => {
-          const error =!steamIDTemplate.test(value);
-          setError(error);
-          console.log(error);
-          !error && onSubmit()
-        }}
+        onClick={() => handleSubmit()}
       >
         arrow_forward
       </span>
