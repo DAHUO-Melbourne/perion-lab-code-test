@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <div className='page'>
       <h1 className='heading'>Welcome to Steam Game Library  Analyser</h1>
-      <Input value={steamId} setValue={setSteamId}/>
+      <Input value={steamId} setValue={setSteamId} onSubmit={() => {}}/>
     </div>
   );
 }

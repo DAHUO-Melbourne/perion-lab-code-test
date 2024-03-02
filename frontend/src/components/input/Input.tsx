@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface InputProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  error?: boolean;
+  onSubmit: () => void;
 }
 
 const Input: React.FC<InputProps> = ({
   value,
   setValue,
-  error,
+  onSubmit,
 }: InputProps) => {
+  const [error, setError] = useState<boolean>(false);
   return (
-    <input
-      value={value}
-      onChange={(e) => setValue(e.target.value.toString())}
-    />
+    <div className='input_wrapper'>
+      <input
+        value={value}
+        onChange={(e) => {
+          setError(false);
+          setValue(e.target.value.toString())
+        }}
+        className={error ? 'input_error' : 'input'}
+      />
+      <span className="material-symbols-outlined icon" onClick={() => onSubmit()}>
+        arrow_forward
+      </span>
+    </div>
   );
 }
 

@@ -1,0 +1,19 @@
+.icon {
+  color: $white;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.input_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  height: 30px;
+  width: 300px;
+  border-radius: 30px;
+  &_error {
+    border-color: $red;
+  }
+}
