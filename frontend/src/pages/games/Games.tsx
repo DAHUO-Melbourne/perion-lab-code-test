@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface GamesProps {}
-
-const Games: React.FC<GamesProps> = ({}: GamesProps) => {
+const Games: React.FC = () => {
   return (
     <div>
       

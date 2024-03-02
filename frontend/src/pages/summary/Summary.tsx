@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {useLocation} from 'react-router-dom';
 
-interface SummaryProps {}
+interface stateType {
+  steamId: string
+}
 
-const Summary: React.FC<SummaryProps> = ({}: SummaryProps) => {
+const Summary: React.FC = () => {
+  const location = useLocation<stateType>();
+  const steamId = location.state.steamId;
+
+  useEffect(() => {
+
+  }, [steamId])
+
   return (
-    <div>
+    <div className='page'>
       
     </div>
   );
