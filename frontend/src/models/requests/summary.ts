@@ -7,9 +7,8 @@ export interface GetUserSummaryDto {
 export const requestGetUserSummary = async (
   params: GetUserSummaryDto,
 ) => {
-  console.log(params);
   try {
-    const response = await axios.get(`http://localhost:5000/users/getSummaryData/${params}`)
+    const response = await axios.get(`http://localhost:5000/users/getSummaryData/${params.steamId}`)
     return response;
   } catch (error) {
     console.error('Error:', error);

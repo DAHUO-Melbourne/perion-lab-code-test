@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import {useLocation} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { getSteamUserSummary } from '../../models/actions/summary';
+import { GetUserSummaryDto } from '../../models/requests/summary';
 
 interface stateType {
   steamId: string
 }
 
 interface SummaryProps {
-  performGetSteamUserSummary: (p: string) => void;
+  performGetSteamUserSummary: (p: GetUserSummaryDto) => void;
 }
 
 const Summary: React.FC<SummaryProps> = ({
@@ -18,7 +19,7 @@ const Summary: React.FC<SummaryProps> = ({
   const steamId = location.state.steamId;
 
   useEffect(() => {
-    performGetSteamUserSummary(steamId)
+    performGetSteamUserSummary({steamId: steamId})
   }, [performGetSteamUserSummary, steamId])
 
   return (
@@ -33,7 +34,7 @@ const mapStateProps = (state: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
-  performGetSteamUserSummary: (params: string) => {
+  performGetSteamUserSummary: (params: GetUserSummaryDto) => {
     dispatch(getSteamUserSummary(params));
   },
 });
