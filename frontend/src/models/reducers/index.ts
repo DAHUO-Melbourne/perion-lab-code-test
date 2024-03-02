@@ -1,2 +1,6 @@
 import {combineReducers} from 'redux';
-export default combineReducers({});
+import summary from './summary';
+
+export default combineReducers({
+  summary
+});

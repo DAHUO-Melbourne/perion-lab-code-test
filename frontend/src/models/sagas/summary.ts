@@ -23,12 +23,10 @@ function* performGetSteamUserSummary(payload: any) {
     yield put(getSteamUserSummaryLoading({}));
     // @ts-ignore
     const res = yield call(requestGetUserSummary, payload.payload);
-    if (res?.code === 200 || res?.code === 204) {
-      yield put(getSteamUserSummarySuccess({
-        notification: res?.notifications ?? [],
-        userLoginId: res?.userLoginId,
-        hasUnreadNotification: res?.hasUnreadNotification,
-      }));
+    console.log(res);
+    if (res?.status === 200) {
+      console.log(res);
+      yield put(getSteamUserSummarySuccess(res.data));
     } else {
       yield put(getSteamUserSummaryFail());
     }
