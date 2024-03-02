@@ -30,7 +30,7 @@ router.route('/getSummaryData/:id').get((req,res)=>{
       const result = {
         gamesCount,
         mostPlayedGame,
-        totalPlaytime,
+        totalPlaytime: (totalPlaytime / 60).toFixed(2),
       }
       res.json(result);
     }

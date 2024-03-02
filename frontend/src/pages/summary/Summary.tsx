@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useLocation} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { getSteamUserSummary } from '../../models/actions/summary';
@@ -7,6 +7,7 @@ import { mostPlayedGameProps } from '../../models/reducers/summary';
 import Thumbnail from '../../components/thumbnail';
 import SteamIcon from '../../assets/icons/steam-icon.jpeg';
 import { ACTION_STATUS } from '../../models/states';
+import Input from '../../components/input';
 
 interface stateType {
   steamId: string
@@ -29,10 +30,11 @@ const Summary: React.FC<SummaryProps> = ({
 }: SummaryProps) => {
   const location = useLocation<stateType>();
   const steamId = location.state.steamId;
+  const [inputSteamId, setInputSteamId] = useState<string>(steamId);
 
   useEffect(() => {
     performGetSteamUserSummary({steamId: steamId})
-  }, [performGetSteamUserSummary, steamId])
+  }, [])
 
   return (
     <div className='page'>
@@ -54,6 +56,14 @@ const Summary: React.FC<SummaryProps> = ({
           <h3 className='heading'>Total Played Time: {totalPlaytime} hours</h3>
         </>
       )}
+      <h2 className='heading'>You want to check someone else? <br/>Please input steam id below:</h2>
+      <Input
+        value={inputSteamId}
+        setValue={setInputSteamId}
+        onSubmit={() => 
+          performGetSteamUserSummary({steamId: inputSteamId})
+        }
+      />
     </div>
   );
 }
