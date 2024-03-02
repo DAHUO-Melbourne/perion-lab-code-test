@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import { getSteamUserGamesList } from '../../models/actions/games';
 import { GetUserGamesListDto } from '../../models/requests/games';
 import { GameProps } from '../../models/reducers/games';
+import GameCard from '../../components/gameCard';
 
 interface GamesProps {
   gamesList: GameProps[];
@@ -28,6 +29,12 @@ const Games: React.FC<GamesProps> = ({
     <div className='page'>
       <Thumbnail src={SteamIcon} />
       <h1 className='heading'>Full Games List</h1>
+      {gamesList.map((game: GameProps) => (
+        <GameCard
+          name={game.name}
+          playTime={game.time}
+        />
+      ))}
     </div>
   );
 }

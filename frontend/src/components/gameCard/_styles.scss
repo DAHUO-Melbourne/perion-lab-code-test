@@ -1,0 +1,9 @@
+.game_card {
+  padding: 10px 20px;
+  border: 1px;
+  background-color: $white;
+  color: $black;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
