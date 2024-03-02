@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import { getSteamUserSummary } from '../../models/actions/summary';
 import { GetUserSummaryDto } from '../../models/requests/summary';
 import { mostPlayedGameProps } from '../../models/reducers/summary';
+import Thumbnail from '../../components/thumbnail';
+import SteamIcon from '../../assets/icons/steam-icon.jpeg';
+import { ACTION_STATUS } from '../../models/states';
 
 interface stateType {
   steamId: string
@@ -27,15 +30,30 @@ const Summary: React.FC<SummaryProps> = ({
   const location = useLocation<stateType>();
   const steamId = location.state.steamId;
 
-  console.log(status);
-
   useEffect(() => {
     performGetSteamUserSummary({steamId: steamId})
   }, [performGetSteamUserSummary, steamId])
 
   return (
     <div className='page'>
-      
+      <Thumbnail src={SteamIcon} />
+      <h1 className='heading'>Steam Account Summary</h1>
+      {status === ACTION_STATUS.fail && (
+        <h3 className='heading'>Loading Failed, please retry later</h3>
+      )}
+      {status === ACTION_STATUS.error && (
+        <h3 className='heading'>Server has some errors now, please retry later</h3>
+      )}
+      {status === ACTION_STATUS.loading && (
+        <h3 className='heading'>LOADING...</h3>
+      )}
+      {status === ACTION_STATUS.success && (
+        <>
+          <h3 className='heading'>Total Games Count: {gamesCount}</h3>
+          <h3 className='heading'>Most Played Game: {mostPlayedGame.name}</h3>
+          <h3 className='heading'>Total Played Time: {totalPlaytime} hours</h3>
+        </>
+      )}
     </div>
   );
 }
