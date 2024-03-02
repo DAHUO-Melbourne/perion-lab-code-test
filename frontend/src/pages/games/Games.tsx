@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Thumbnail from '../../components/thumbnail';
 import SteamIcon from '../../assets/icons/steam-icon.jpeg';
 import {useLocation} from 'react-router-dom';
@@ -20,6 +20,7 @@ const Games: React.FC<GamesProps> = ({
 }: GamesProps) => {
   const location = useLocation<stateType>();
   const steamId = location.state.steamId;
+  const [checkUnPlayedGames, setCheckUnPlayedGames] = useState<boolean>(false);
 
   useEffect(() => {
     performGetSteamUserGamesList({steamId: steamId})
@@ -29,6 +30,11 @@ const Games: React.FC<GamesProps> = ({
     <div className='page'>
       <Thumbnail src={SteamIcon} />
       <h1 className='heading'>Full Games List</h1>
+      <input
+        type='checkbox'
+        aria-label='filter-unplayed-games'
+        onChange={() => setCheckUnPlayedGames((value) => !value)}
+      />
       {gamesList.map((game: GameProps) => (
         <GameCard
           name={game.name}
