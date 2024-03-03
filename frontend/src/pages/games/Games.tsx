@@ -12,7 +12,7 @@ import { ACTION_STATUS } from '../../models/states';
 import Checkbox from '../../components/checkbox';
 
 interface GamesProps {
-  status: string,
+  status: string;
   gamesList: GameProps[];
   performGetSteamUserGamesList: (p: GetUserGamesListDto) => void;
 }

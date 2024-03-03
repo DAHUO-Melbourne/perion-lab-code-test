@@ -10,7 +10,7 @@ import { ACTION_STATUS } from '../../models/states';
 import Button from '../../components/button';
 
 export interface stateType {
-  steamId: string
+  steamId: string;
 }
 
 interface SummaryProps {

@@ -10,13 +10,13 @@ import {
 import { ACTION_STATUS } from '../states';
 
 export interface GameProps {
-  name: string,
-  time: string,
+  name: string;
+  time: string;
 }
 
 export interface summaryProps {
-  status: string,
-  gamesList: GameProps[],
+  status: string;
+  gamesList: GameProps[];
 };
 
 const defaultState: summaryProps = {

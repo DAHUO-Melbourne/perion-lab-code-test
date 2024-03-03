@@ -1,8 +1,8 @@
 import React from 'react';
 
 export interface GameCardProps {
-  name: string,
-  playTime: string,
+  name: string;
+  playTime: string;
 }
 
 const GameCard: React.FC<GameCardProps> = ({

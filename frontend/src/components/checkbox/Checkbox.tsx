@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface CheckboxProps {
-  onChange: (p: boolean) => void,
-  label: string,
+  onChange: (p: boolean) => void;
+  label: string;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({

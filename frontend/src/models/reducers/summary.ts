@@ -10,23 +10,23 @@ import {
 import { ACTION_STATUS } from '../states';
 
 export interface mostPlayedGameProps {
-  appid: number,
-  name: string,
-  playtime_forever: number,
-  img_icon_url: string,
-  has_community_visible_stats: boolean,
-  playtime_windows_forever: number,
-  playtime_mac_forever: number,
-  playtime_linux_forever: number,
-  rtime_last_played: number,
-  playtime_disconnected: number
+  appid: number;
+  name: string;
+  playtime_forever: number;
+  img_icon_url: string;
+  has_community_visible_stats: boolean;
+  playtime_windows_forever: number;
+  playtime_mac_forever: number;
+  playtime_linux_forever: number;
+  rtime_last_played: number;
+  playtime_disconnected: number;
 }
 
 export interface summaryProps {
-  status: string,
-  gamesCount: number,
-  mostPlayedGame: mostPlayedGameProps,
-  totalPlaytime: number,
+  status: string;
+  gamesCount: number;
+  mostPlayedGame: mostPlayedGameProps;
+  totalPlaytime: number;
 };
 
 const defaultState: summaryProps = {
