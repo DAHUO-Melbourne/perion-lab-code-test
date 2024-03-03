@@ -9,6 +9,7 @@ import { GetUserGamesListDto } from '../../models/requests/games';
 import { GameProps } from '../../models/reducers/games';
 import GameCard from '../../components/gameCard';
 import { ACTION_STATUS } from '../../models/states';
+import Checkbox from '../../components/checkbox';
 
 interface GamesProps {
   status: string,
@@ -37,16 +38,10 @@ const Games: React.FC<GamesProps> = ({
     <div className='page'>
       <Thumbnail src={SteamIcon} />
       <h1 className='heading'>Full Games List</h1>
-      <label>
-        <input
-          type='checkbox'
-          aria-label='filter-unplayed-games'
-          onChange={(event) => {
-            setFilterUnplayedGames(event.target.checked);
-          }}
-        />
-        Filter out all unplayed games
-      </label>
+      <Checkbox
+        label='Filter out all unplayed games'
+        onChange={setFilterUnplayedGames}
+      />
       {status === ACTION_STATUS.loading && (
         <h3 className='heading'>LOADING...</h3>
       )}
