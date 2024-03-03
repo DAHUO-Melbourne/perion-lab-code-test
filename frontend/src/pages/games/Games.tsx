@@ -38,18 +38,20 @@ const Games: React.FC<GamesProps> = ({
     <div className='page'>
       <Thumbnail src={SteamIcon} />
       <h1 className='heading'>Games List: {filteredGamesList.length} games</h1>
-      <Checkbox
-        label='Filter out all unplayed games'
-        onChange={setFilterUnplayedGames}
-      />
+      {status === ACTION_STATUS.success && (
+        <Checkbox
+          label='Filter out all unplayed games'
+          onChange={setFilterUnplayedGames}
+        />
+      )}
       {status === ACTION_STATUS.loading && (
         <h3 className='heading'>LOADING...</h3>
       )}
       {status === ACTION_STATUS.error && (
-        <h3 className='heading'>Server has some errors now, please retry later</h3>
+        <h3 className='heading error'>Server has some errors now, please retry later</h3>
       )}
       {status === ACTION_STATUS.fail && (
-        <h3 className='heading'>Loading Failed, please retry later</h3>
+        <h3 className='heading error'>Loading Failed, please retry later</h3>
       )}
       {status === ACTION_STATUS.success && filteredGamesList.map((game: GameProps) => (
         <GameCard
