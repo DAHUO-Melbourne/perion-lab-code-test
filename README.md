@@ -30,3 +30,17 @@
 According to my own personal experience, I have more than 200 games, and I know I haven't played some of them before. But I don't know what are the games I haven't played before
 So I added a filter checkbox here to pick up all the games I haven't before, and I believe this function is very helpful because I find there is no similar function as I just mentioned.
 ![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/step3/games_list_filter.jpg)
+
+## How to run the app on local?
+
+1. git clone the app, and cd into folder `perion-lab-code-test`
+
+2. make sure you create a `.env` file at the root folder of `backend`, and put a field called `API_KEY` into the .env file, **I will offer the value of API_KEY in the email for security considerations**:
+
+3. open the first terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run backend` to start the backend.
+
+4. open the second terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend` to start the frontend.
+
+5. open `http://localhost:3000/`, then you will see the app is running as shown below:
+
+6. open the third terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend-test` to run the frontend unit tests, you will see the tests result as shown below:
