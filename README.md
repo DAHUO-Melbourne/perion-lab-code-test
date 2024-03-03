@@ -34,15 +34,19 @@ So I added a filter checkbox here to pick up all the games I haven't before, and
 ## How to run the app on local?
 
 1. git clone the app, and cd into folder `perion-lab-code-test`
+![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/folder_step1.jpg)
 
 2. **_IMPORTANT!!!_** make sure you create a `.env` file at the root folder of `backend`, and put a field called `API_KEY` into the .env file, **_`I will offer the value of API_KEY in the email for security considerations`_**:
-![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/env_backend.jpg)
+![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/env_step2.jpg)
 
 3. open the first terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run backend` to start the backend.
+![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/run_backend_step3.jpg)
 
 4. open the second terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend` to start the frontend.
+![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/run_frontend_step4.jpg)
 
 5. open `http://localhost:3000/`, then you will see the app is running as shown below:
+![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/browser_step5.jpg)
 
 6. open the third terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend-test` to run the frontend unit tests, you will see the tests result as shown below:
 ![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/test_result/testing_result.jpg)
