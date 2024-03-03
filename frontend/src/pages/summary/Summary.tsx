@@ -42,10 +42,10 @@ const Summary: React.FC<SummaryProps> = ({
       <h1 className='heading'>Steam Account Summary</h1>
       <h3 className='heading'>SteamId: {steamId}</h3>
       {status === ACTION_STATUS.fail && (
-        <h3 className='heading'>Loading Failed, please retry later</h3>
+        <h3 className='heading error'>Loading Failed, please retry later or check if you input a correct steam id or not</h3>
       )}
       {status === ACTION_STATUS.error && (
-        <h3 className='heading'>Server has some errors now, please retry later</h3>
+        <h3 className='heading error'>Server has some errors now, please retry later</h3>
       )}
       {status === ACTION_STATUS.loading && (
         <h3 className='heading'>LOADING...</h3>
@@ -55,18 +55,18 @@ const Summary: React.FC<SummaryProps> = ({
           <h3 className='heading'>Owned Total Games Count: {gamesCount}</h3>
           <h3 className='heading'>Most Played Game: {mostPlayedGame.name}</h3>
           <h3 className='heading'>Total Played Time: {totalPlaytime} hours</h3>
+          <Button
+            onClick={() => 
+              history.push({
+                pathname: '/games',
+                state: {steamId}
+              })
+            }
+          >
+            View Full Games List
+          </Button>
         </>
       )}
-      <Button
-        onClick={() => 
-          history.push({
-            pathname: '/games',
-            state: {steamId}
-          })
-        }
-      >
-        View Full Games List
-      </Button>
     </div>
   );
 }
