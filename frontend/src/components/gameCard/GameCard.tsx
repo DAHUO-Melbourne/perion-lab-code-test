@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface GameCardProps {
+export interface GameCardProps {
   name: string,
   playTime: string,
 }

@@ -2,8 +2,9 @@ import React from "react";
 import {render} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Thumbnail from "./Thumbnail";
+import { ThumbnailProps } from "./Thumbnail";
 
-const defaultProps = {
+const defaultProps: ThumbnailProps = {
   src: 'image-src-string'
 };
 
