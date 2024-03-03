@@ -37,7 +37,7 @@ const Input: React.FC<InputProps> = ({
       <span
         className="material-symbols-outlined icon"
         onClick={() => handleSubmit()}
-        data-testId='arrow_forward'
+        data-testid='arrow_forward'
       >
         arrow_forward
       </span>
