@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { getSteamUserSummary } from '../../models/actions/summary';
@@ -7,7 +7,6 @@ import { mostPlayedGameProps } from '../../models/reducers/summary';
 import Thumbnail from '../../components/thumbnail';
 import SteamIcon from '../../assets/icons/steam-icon.jpeg';
 import { ACTION_STATUS } from '../../models/states';
-import Input from '../../components/input';
 import Button from '../../components/button';
 
 export interface stateType {
@@ -32,17 +31,16 @@ const Summary: React.FC<SummaryProps> = ({
   const history = useHistory();
   const location = useLocation<stateType>();
   const steamId = location.state.steamId;
-  const [inputSteamId, setInputSteamId] = useState<string>(steamId);
 
   useEffect(() => {
     performGetSteamUserSummary({steamId: steamId})
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [performGetSteamUserSummary, steamId])
 
   return (
     <div className='page'>
       <Thumbnail src={SteamIcon} />
       <h1 className='heading'>Steam Account Summary</h1>
+      <h3 className='heading'>SteamId: {steamId}</h3>
       {status === ACTION_STATUS.fail && (
         <h3 className='heading'>Loading Failed, please retry later</h3>
       )}
@@ -59,19 +57,11 @@ const Summary: React.FC<SummaryProps> = ({
           <h3 className='heading'>Total Played Time: {totalPlaytime} hours</h3>
         </>
       )}
-      <h2 className='heading'>You want to check someone else? <br/>Please input steam id below:</h2>
-      <Input
-        value={inputSteamId}
-        setValue={setInputSteamId}
-        onSubmit={() => 
-          performGetSteamUserSummary({steamId: inputSteamId})
-        }
-      />
       <Button
         onClick={() => 
           history.push({
             pathname: '/games',
-            state: {steamId: inputSteamId}
+            state: {steamId}
           })
         }
       >
