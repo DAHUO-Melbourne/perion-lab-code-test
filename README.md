@@ -35,7 +35,8 @@ So I added a filter checkbox here to pick up all the games I haven't before, and
 
 1. git clone the app, and cd into folder `perion-lab-code-test`
 
-2. make sure you create a `.env` file at the root folder of `backend`, and put a field called `API_KEY` into the .env file, **I will offer the value of API_KEY in the email for security considerations**:
+2. **_IMPORTANT!!!_** make sure you create a `.env` file at the root folder of `backend`, and put a field called `API_KEY` into the .env file, **_`I will offer the value of API_KEY in the email for security considerations`_**:
+![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/env_backend.jpg)
 
 3. open the first terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run backend` to start the backend.
 
@@ -44,3 +45,4 @@ So I added a filter checkbox here to pick up all the games I haven't before, and
 5. open `http://localhost:3000/`, then you will see the app is running as shown below:
 
 6. open the third terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend-test` to run the frontend unit tests, you will see the tests result as shown below:
+![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/test_result/testing_result.jpg)
