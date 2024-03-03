@@ -53,7 +53,7 @@ const Summary: React.FC<SummaryProps> = ({
       )}
       {status === ACTION_STATUS.success && (
         <>
-          <h3 className='heading'>Total Games Count: {gamesCount}</h3>
+          <h3 className='heading'>Owned Total Games Count: {gamesCount}</h3>
           <h3 className='heading'>Most Played Game: {mostPlayedGame.name}</h3>
           <h3 className='heading'>Total Played Time: {totalPlaytime} hours</h3>
         </>

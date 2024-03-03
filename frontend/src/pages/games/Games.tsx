@@ -37,7 +37,7 @@ const Games: React.FC<GamesProps> = ({
   return (
     <div className='page'>
       <Thumbnail src={SteamIcon} />
-      <h1 className='heading'>Full Games List</h1>
+      <h1 className='heading'>Games List: {filteredGamesList.length} games</h1>
       <Checkbox
         label='Filter out all unplayed games'
         onChange={setFilterUnplayedGames}
