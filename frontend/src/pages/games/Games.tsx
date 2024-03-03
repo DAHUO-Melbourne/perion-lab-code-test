@@ -23,11 +23,15 @@ const Games: React.FC<GamesProps> = ({
 }: GamesProps) => {
   const location = useLocation<stateType>();
   const steamId = location.state.steamId;
-  const [checkUnPlayedGames, setCheckUnPlayedGames] = useState<boolean>(false);
+  const [filterUnplayedGames, setFilterUnplayedGames] = useState(false);
 
   useEffect(() => {
     performGetSteamUserGamesList({steamId: steamId})
   }, [performGetSteamUserGamesList, steamId])
+
+  const filteredGamesList = filterUnplayedGames
+  ? gamesList.filter((game) => game.time !== '0.00')
+  : gamesList;
 
   return (
     <div className='page'>
@@ -36,7 +40,9 @@ const Games: React.FC<GamesProps> = ({
       <input
         type='checkbox'
         aria-label='filter-unplayed-games'
-        onChange={() => setCheckUnPlayedGames((value) => !value)}
+        onChange={(event) => {
+          setFilterUnplayedGames(event.target.checked);
+        }}
       />
       {status === ACTION_STATUS.loading && (
         <h3 className='heading'>LOADING...</h3>
@@ -47,7 +53,7 @@ const Games: React.FC<GamesProps> = ({
       {status === ACTION_STATUS.fail && (
         <h3 className='heading'>Loading Failed, please retry later</h3>
       )}
-      {status === ACTION_STATUS.success && gamesList.map((game: GameProps) => (
+      {status === ACTION_STATUS.success && filteredGamesList.map((game: GameProps) => (
         <GameCard
           name={game.name}
           playTime={game.time}
