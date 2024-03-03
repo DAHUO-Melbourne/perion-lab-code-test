@@ -50,3 +50,8 @@ So I added a filter checkbox here to pick up all the games I haven't before, and
 
 6. open the third terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend-test` to run the frontend unit tests, you will see the tests result as shown below:
 ![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/test_result/testing_result.jpg)
+
+## What's next plan?
+- I can also add new functions to ranking the games based on played time Decreasingly.
+- I can add lazyloading to the games list if user has a massive game list for more than 1000 games in repo.
+- I can also add onClick functions try to retrieve some games basic info when user clicks on game on the page.
