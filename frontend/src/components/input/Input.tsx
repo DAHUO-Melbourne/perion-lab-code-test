@@ -19,29 +19,34 @@ const Input: React.FC<InputProps> = ({
     !error && onSubmit()
   }
   return (
-    <div className='input_wrapper'>
-      <input
-        value={value}
-        onChange={(e) => {
-          setError(false);
-          setValue(e.target.value.toString())
-        }}
-        onKeyUp={(e) => {
-          if (e.key !== 'Enter') {
-            return;
-          }
-          handleSubmit();
-        }}
-        className={error ? 'input_error' : 'input'}
-      />
-      <span
-        className="material-symbols-outlined icon"
-        onClick={() => handleSubmit()}
-        data-testid='arrow_forward'
-      >
-        arrow_forward
-      </span>
-    </div>
+    <>
+      <div className='input_wrapper'>
+        <input
+          value={value}
+          onChange={(e) => {
+            setError(false);
+            setValue(e.target.value.toString())
+          }}
+          onKeyUp={(e) => {
+            if (e.key !== 'Enter') {
+              return;
+            }
+            handleSubmit();
+          }}
+          className={error ? 'input_error' : 'input'}
+        />
+        <span
+          className="material-symbols-outlined icon"
+          onClick={() => handleSubmit()}
+          data-testid='arrow_forward'
+        >
+          arrow_forward
+        </span>
+      </div>
+      {error && (
+        <h4 className='error'>Your input format has some problems, plz make sure all your digits are number</h4>
+      )}
+    </>
   );
 }
 
