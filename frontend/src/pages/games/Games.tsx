@@ -30,20 +30,23 @@ const Games: React.FC<GamesProps> = ({
   }, [performGetSteamUserGamesList, steamId])
 
   const filteredGamesList = filterUnplayedGames
-  ? gamesList.filter((game) => game.time !== '0.00')
+  ? gamesList.filter((game) => game.time === '0.00')
   : gamesList;
 
   return (
     <div className='page'>
       <Thumbnail src={SteamIcon} />
       <h1 className='heading'>Full Games List</h1>
-      <input
-        type='checkbox'
-        aria-label='filter-unplayed-games'
-        onChange={(event) => {
-          setFilterUnplayedGames(event.target.checked);
-        }}
-      />
+      <label>
+        <input
+          type='checkbox'
+          aria-label='filter-unplayed-games'
+          onChange={(event) => {
+            setFilterUnplayedGames(event.target.checked);
+          }}
+        />
+        Filter out all unplayed games
+      </label>
       {status === ACTION_STATUS.loading && (
         <h3 className='heading'>LOADING...</h3>
       )}
