@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { steamIDTemplate } from '../../utils/regex';
 
-interface InputProps {
+export interface InputProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   onSubmit: () => void;
@@ -37,6 +37,7 @@ const Input: React.FC<InputProps> = ({
       <span
         className="material-symbols-outlined icon"
         onClick={() => handleSubmit()}
+        data-testId='arrow_forward'
       >
         arrow_forward
       </span>
