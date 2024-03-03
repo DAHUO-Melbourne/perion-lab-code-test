@@ -45,7 +45,7 @@ So I added a filter checkbox here to pick up all the games I haven't before, and
 4. open the second terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend` to start the frontend.
 ![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/run_frontend_step4.jpg)
 
-5. open `http://localhost:3000/`, then you will see the app is running as shown below:
+5. open `http://localhost:3000/`, then you will see the app is running as shown below, now you can input your steamId(mostly 17 digits) and get info, enjoy!:
 ![image](https://github.com/DAHUO-Melbourne/perion-lab-code-test/blob/main/frontend/public/readme_screenshots/local/steps/browser_step5.jpg)
 
 6. open the third terminal, and make sure you are in the folder `perion-lab-code-test`, then run `npm run frontend-test` to run the frontend unit tests, you will see the tests result as shown below:
