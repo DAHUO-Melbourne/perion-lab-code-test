@@ -9,6 +9,10 @@ app.use(express.json());
 
 app.use('/users', usersRouter);
 
-app.listen(5000,()=>{
+app.use('/', (req, res) => {
+  res.send('welcome to perion-lab backend heroku');
+});
+
+app.listen(process.env.PORT || 5000,()=>{
   console.log('Server is running on port: 5000');
 })
