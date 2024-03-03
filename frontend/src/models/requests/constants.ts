@@ -1,0 +1,1 @@
+export const baseUrl = process.env.NODE_ENV === 'production' ? 'https://perion-backend-deploy-91e405bb5140.herokuapp.com' : 'http://localhost:5000';
