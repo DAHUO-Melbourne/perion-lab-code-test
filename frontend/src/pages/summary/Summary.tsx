@@ -36,6 +36,7 @@ const Summary: React.FC<SummaryProps> = ({
 
   useEffect(() => {
     performGetSteamUserSummary({steamId: steamId})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
